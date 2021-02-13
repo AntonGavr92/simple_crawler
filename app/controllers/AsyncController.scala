@@ -18,6 +18,6 @@ class AsyncController @Inject()(crawlService: CrawlService, cc: ControllerCompon
         urls <- body.validate[Seq[Url]].asOpt
       } yield {
         crawlService.crawlTitles(urls).map(result => Ok(Json.toJson(result)))
-      }).getOrElse(Future.successful(BadRequest("Wrong url format")))
+      }).getOrElse(Future.successful(BadRequest("Wrong urls format")))
   }
 }
